@@ -12,12 +12,12 @@ fnPlSim(){
     if [ $exitstatus = 0 ]; then
         true
     else
-        sudo screen -dmS kanal$1 omxplayer $4 -o alsa:hw:$2,0 /home/pi/script/sound/$3.mp3
+        sudo screen -dmS kanal$1 omxplayer $4 -o alsa:hw:$2,0 /home/pi/player-pi/sound/$3.mp3
     fi
 }
 
 fnPlOnce(){
-    sudo omxplayer -o alsa:hw:$1,0 /home/pi/script/sound/$2.mp3
+    sudo omxplayer -o alsa:hw:$1,0 /home/pi/player-pi/sound/$2.mp3
 }
 
 fnOff(){

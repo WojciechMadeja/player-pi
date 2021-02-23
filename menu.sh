@@ -159,7 +159,7 @@ fi
 ;;
 4)
     sudo killall screen
-    cd /home/pi/script/ &&  sudo screen -dmS main ./player.sh
+    cd /home/pi/player-pi/ &&  sudo screen -dmS main ./player.sh
 ;;
 5)
 
@@ -174,7 +174,7 @@ fi
     if [[ $(sudo pgrep screen) > 0 ]]; then
         whiptail --title "Informacja" --msgbox "Dzwieki aktualnie dzialaja" 8 78
     else
-        cd /home/pi/script/ &&  sudo screen -dmS main ./player.sh
+        cd /home/pi/player-pi/ &&  sudo screen -dmS main ./player.sh
     fi
 ;;
 7)
