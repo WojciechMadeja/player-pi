@@ -191,3 +191,4 @@ fi
 esac
 done
 echo "Author: Wojciech Madeja, ver. 1.0"
+

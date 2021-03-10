@@ -52,6 +52,9 @@ while true; do
             sleep 1m
             echo "po liczenieniu 2"
 
+            hourNow=`date +%-H`
+            hourEnd=$(cat value/hourEnd.txt)
+
             if [[ $hourNow -eq $hourEnd ]]; then
                 
                 fnOff "1"
