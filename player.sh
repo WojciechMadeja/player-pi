@@ -27,6 +27,7 @@ fnOff(){
 
 fnVol "1" "Device"
 fnVol "2" "Device_1"
+fnVol "3" "Device_2"
 
 
 while true; do
@@ -40,17 +41,13 @@ while true; do
             hourEnd=$(cat value/hourEnd.txt)
 
                        
-            fnPlOnce "Device" "poczatek"
-            fnPlSim "1" "Device_1" "lekcja" 
-            fnPlSim "2" "Device" "dzwonek"
-            echo "przed liczeniem"
+            fnPlSim "1" "Device" "ogienKon" 
+            fnPlSim "2" "Device_1" "rozmowaStukanie"
+            fnPlSim "3" "Device_2" "stukanieRabanieZew" 
+           
             sleep 9m 10s
-            echo "po liczeniu"
             sudo killall screen
-            fnPlOnce "Device" "poczatek"
-            echo "przed liczeniem 2"
             sleep 1m
-            echo "po liczenieniu 2"
 
             hourNow=`date +%-H`
             hourEnd=$(cat value/hourEnd.txt)
