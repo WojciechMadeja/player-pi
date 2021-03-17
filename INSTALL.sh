@@ -29,5 +29,5 @@ if [ -f /etc/crontab ]; then
         sudo echo "player-pi bedzie uruchamial sie ze startem systemu"
     fi
 else
-    echo "Twoj system operacyjny nie posiada pliku bahrc"
+    echo "Twoj system operacyjny nie posiada pliku crontab"
 fi
