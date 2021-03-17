@@ -159,22 +159,24 @@ fi
 ;;
 4)
     sudo killall screen
-    cd /home/pi/player-pi/ &&  sudo screen -dmS main ./player.sh
+    sudo killall player.sh
+    cd /home/pi/player-pi/ && ./player.sh >/dev/null & 
 ;;
 5)
 
     if (whiptail --title "Potwierdz wybor" --yesno "Czy na pewno chcesz wylaczyc dzwieki?." 8 78); then
         sudo killall screen
+        sudo killall player.sh
     else
         whiptail --title "Informacja" --msgbox "Anulowales wylaczenie dzwiekow." 8 78
     fi
     
 ;;
 6)
-    if [[ $(sudo pgrep screen) > 0 ]]; then
+    if [[ $(sudo pgrep player.sh) > 0 ]]; then
         whiptail --title "Informacja" --msgbox "Dzwieki aktualnie dzialaja" 8 78
     else
-        cd /home/pi/player-pi/ &&  sudo screen -dmS main ./player.sh
+        cd /home/pi/player-pi/ && ./player.sh >/dev/null &
     fi
 ;;
 7)
@@ -190,5 +192,5 @@ fi
 ;;
 esac
 done
-echo "Author: Wojciech Madeja, ver. 1.0"
+echo "Author: Wojciech Madeja, ver. 1.1"
 
