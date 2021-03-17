@@ -58,7 +58,7 @@ whiptail --title "Player Pi" --menu \
 "Mozesz zmienic godziny pracy i poziom glosnosci playera.
 Player dziala od godz. $oldHourBegin do godz. $oldHourEnd.
 
-Wybierz, co chcesz zrobic:  " 20 78 8 \
+Wybierz, co chcesz zrobic:  " 20 78 10 \
 "1" "Zmiana godziny wlaczenia playera" \
 "2" "Zmiana godziny wylaczenia playera" \
 "3" "Poziom glosnosci" \
@@ -66,7 +66,9 @@ Wybierz, co chcesz zrobic:  " 20 78 8 \
 "5" "Wylaczyc dzwieki" \
 "6" "Wlaczyc dzwieki" \
 "7" "Zrestartowac Raspberry Pi" \
-"8" "Wyjscie z programu"  3>&1 1>&2 2>&3)
+"8" "Wylaczenie dzwiekow po starcie systemu" \
+"9" "Wlaczenie dzwiekow po starcie systemu" \
+"10" "Wyjscie z programu"  3>&1 1>&2 2>&3)
 
 case $choice in
 
@@ -188,6 +190,32 @@ fi
     fi
 ;;
 8)
+    checkBashrc=$(grep "@reboot root cd /home/pi/player-pi/ && ./player.sh" /etc/crontab)
+    exitstatus=$?
+    
+    if [ $exitstatus = 0 ]; then
+        if (whiptail --title "Potwierdz wybor" --yesno "Czy na pewno chcesz wylaczyc dzwieki po starcie systemu." 8 78); then
+            sudo sed -e '/^@reboot/d' /etc/crontab >> sudo /etc/crontab
+    
+        else
+            whiptail --title "Informacja" --msgbox "Anulowales chec wylaczenia dzwiekow po starcie systemu." 8 78
+        fi
+        
+    else
+        whiptail --title "Informacja" --msgbox "Aktualnie dzwieki sa wylaczone po starcie systemu." 8 78
+    fi
+;;
+9)
+    checkBashrc=$(grep "@reboot root cd /home/pi/player-pi/ && ./player.sh" /etc/crontab)
+    exitstatus=$?
+    
+    if [ $exitstatus = 0 ]; then
+        echo "Prawdopodobnie player-pi juz uruchamia sie ze startem systemuu"
+    else
+        sudo echo "@reboot root cd /home/pi/player-pi/ && ./player.sh" >> /etc/crontab
+    fi
+;;
+10)
     break
 ;;
 esac

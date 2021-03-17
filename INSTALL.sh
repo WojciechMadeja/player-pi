@@ -19,7 +19,7 @@ fi
 
 if [ -f /etc/crontab ]; then
     
-    checkBashrc=$(grep "reboot root cd /home/pi/player-pi/ && ./player.sh" /etc/crontab)
+    checkBashrc=$(grep "@reboot root cd /home/pi/player-pi/ && ./player.sh" /etc/crontab)
     exitstatus=$?
     
     if [ $exitstatus = 0 ]; then
