@@ -45,7 +45,7 @@ while true; do
             fnPlSim "2" "Device_1" "rozmowaStukanie"
             fnPlSim "3" "Device_2" "stukanieRabanieZew" 
            
-            sleep 9m 10s
+            sleep 5m 10s
             sudo killall screen
             sleep 1m
 

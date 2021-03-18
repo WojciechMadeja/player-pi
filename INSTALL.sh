@@ -1,5 +1,22 @@
 #!/bin/bash
 
+if [[ $(which screen) > 0 ]]; then
+    echo "screen jest juz zainstalowany w tym systemie"
+else
+    sudo apt-get update && sudo apt-get install screen -y
+fi
+
+if [[ $(which omxplayer) > 0 ]]; then
+    echo "omxplayer jest juz zainstalowany w tym systemie"
+else
+    sudo apt-get update && sudo apt-get install omxplayer -y
+fi
+
+if [[ $(which whiptail) > 0 ]]; then
+    echo "whiptail jest juz zainstalowany w tym systemie"
+else
+    sudo apt-get update && sudo apt-get install whiptail -y
+fi
 
 if [ -f /home/pi/.bashrc ]; then
     
