@@ -39,7 +39,7 @@ if [ -f /etc/crontab ]; then
     exitstatus=$?
     
     if [ $exitstatus = 0 ]; then
-        echo "Prawdopodobnie player-pi juz uruchamia sie ze startem systemuu"
+        echo "Player-pi juz uruchamia sie ze startem systemuu"
     else
         sudo echo "@reboot root cd /home/pi/player-pi/ && ./player.sh" | sudo tee -a /etc/crontab
         sudo echo "player-pi bedzie uruchamial sie ze startem systemu"
