@@ -195,7 +195,9 @@ fi
     
     if [ $exitstatus = 0 ]; then
         if (whiptail --title "Potwierdz wybor" --yesno "Czy na pewno chcesz wylaczyc dzwieki po starcie systemu." 8 78); then
-            sudo sed -e '/^@reboot/d' /etc/crontab >> sudo /etc/crontab
+            sed -e '/^@reboot/d' /etc/crontab >> crontab
+            sudo mv -f crontab /etc/crontab
+            
     
         else
             whiptail --title "Informacja" --msgbox "Anulowales chec wylaczenia dzwiekow po starcie systemu." 8 78
@@ -212,7 +214,7 @@ fi
     if [ $exitstatus = 0 ]; then
         echo "Prawdopodobnie player-pi juz uruchamia sie ze startem systemuu"
     else
-        sudo echo "@reboot root cd /home/pi/player-pi/ && ./player.sh" >> /etc/crontab
+        sudo echo "@reboot root cd /home/pi/player-pi/ && ./player.sh" | sudo tee -a /etc/crontab
     fi
 ;;
 10)
