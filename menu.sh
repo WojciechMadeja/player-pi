@@ -212,7 +212,7 @@ fi
     exitstatus=$?
     
     if [ $exitstatus = 0 ]; then
-        whiptail --title "Informacja" --msgbox "Prawdopodobnie player-pi juz uruchamia sie ze startem systemu." 8 78
+        whiptail --title "Informacja" --msgbox "Player-pi juz uruchamia sie ze startem systemu." 8 78
     else
         sudo echo "@reboot root cd /home/pi/player-pi/ && ./player.sh" | sudo tee -a /etc/crontab
     fi
