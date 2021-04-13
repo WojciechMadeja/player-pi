@@ -18,6 +18,20 @@ else
     sudo apt-get update && sudo apt-get install whiptail -y
 fi
 
+if [[ $(which photofilmstrip) > 0 ]]; then
+    echo "photofilmstrip jest juz zainstalowany w tym systemie"
+else
+    sudo apt-get update && sudo apt-get install photofilmstrip -y
+fi
+
+if [[ $(which photofilmstrip-cli) > 0 ]]; then
+    echo "photofilmstrip-cli jest juz zainstalowany w tym systemie"
+else
+    sudo apt-get update && sudo apt-get install photofilmstrip-cli -y
+fi
+
+
+
 if [ -f /home/pi/.bashrc ]; then
     
     checkBashrc=$(grep "alias menu='cd ~/player-pi  && ./menu.sh'" /home/pi/.bashrc)
